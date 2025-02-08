@@ -1,4 +1,3 @@
-// tests/api.spec.ts
 import { test, expect } from '@playwright/test';
 import {StatusCodes} from "http-status-codes";
 let baseURL: string = 'http://localhost:5000/users';
@@ -13,6 +12,7 @@ test.describe('User management API', () => {
         const responseBody = await response.text()
         expect(responseBody).toBe('[]');
     });
+
     test('POST / - should add a new user', async ({ request }) => {
         const response = await request.post(`${baseURL}`);
         expect(response.status()).toBe(StatusCodes.CREATED);
