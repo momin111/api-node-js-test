@@ -13,7 +13,6 @@ test.describe('User management API', () => {
         const responseBody = await response.text()
         expect(responseBody).toBe('[]');
     });
-
     test('POST / - should add a new user', async ({ request }) => {
         const response = await request.post(`${baseURL}`);
         expect(response.status()).toBe(StatusCodes.CREATED);
@@ -24,7 +23,6 @@ test.describe('User management API', () => {
         const usersResponse = await request.get(`${baseURL}`);
         expect(usersResponse.status()).toBe(StatusCodes.OK);
         const users = await usersResponse.json()
-
         const user = users.find((user: { id: number; }) => user.id === existingUserId)
         expect.soft(user).toEqual(returnedUser)
     });
