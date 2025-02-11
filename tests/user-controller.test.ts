@@ -1,4 +1,3 @@
-// tests/api.spec.ts
 import { test, expect } from '@playwright/test';
 import {StatusCodes} from "http-status-codes";
 let baseURL: string = 'http://localhost:5000/users';
@@ -24,7 +23,6 @@ test.describe('User management API', () => {
         const usersResponse = await request.get(`${baseURL}`);
         expect(usersResponse.status()).toBe(StatusCodes.OK);
         const users = await usersResponse.json()
-
         const user = users.find((user: { id: number; }) => user.id === existingUserId)
         expect.soft(user).toEqual(returnedUser)
     });

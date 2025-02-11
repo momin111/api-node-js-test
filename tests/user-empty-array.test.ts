@@ -1,4 +1,3 @@
-// tests/api.spec.ts
 import { test, expect } from '@playwright/test';
 let baseURL: string = 'http://localhost:5000/users';
 
