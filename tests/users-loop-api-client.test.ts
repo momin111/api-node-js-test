@@ -7,10 +7,12 @@ test.describe('User Management API Tests with api client', () => {
         apiClient = new ApiClient();
         await apiClient.deleteAllUsers(request);
     });
+
     test('GET / - should return empty when no users', async ({request}) => {
         const users = await apiClient.getUsers(request);
         expect(users).toEqual([]);
     });
+
     test('Create few users and verify total number', async ({request}) => {
         const numberOfUsers = 5;
         const createdUsers = [];
@@ -22,6 +24,7 @@ test.describe('User Management API Tests with api client', () => {
         expect(users).toHaveLength(numberOfUsers);
         expect(users).toEqual(createdUsers);
     });
+
     test('Create N users, delete all users, and verify empty response', async ({request}) => {
         const userCount = 5;
         for (let i = 0; i < userCount; i++) {
@@ -31,6 +34,7 @@ test.describe('User Management API Tests with api client', () => {
         const usersAfterDelete = await apiClient.getUsers(request);
         expect(usersAfterDelete).toEqual([]);
     });
+
     test('Create N users, delete one user, and verify remaining users', async ({request}) => {
         const userCount = 4;
         const createdUsers: any[] = [];
